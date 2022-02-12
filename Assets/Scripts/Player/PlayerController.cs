@@ -5,36 +5,39 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //events
+    public static event Action shootArrow;
+
+    //other script ref
+    private PlayerInput playerInput;
+
+    //declaring components
     private Animator anim;
 
+    //declaring variables
     private String aim = "aiming", shoot = "shoot";
-    private bool aiming = false, shooting = false;
 
     private void Awake()
     {
         anim = this.GetComponent<Animator>();
+        playerInput = this.GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
-        getInput();
         AimShootAnimation();
     }
 
     private void AimShootAnimation()
     {
-        anim.SetBool(aim, aiming);
-        anim.SetBool(shoot, (aiming && shooting));
+        anim.SetBool(aim, playerInput.aiming);
+        anim.SetBool(shoot, (playerInput.aiming && playerInput.shooting));
     }
 
-    private void getInput()
-    {
-        aiming = Input.GetKey(KeyCode.Mouse1);
-        shooting = Input.GetKey(KeyCode.Mouse0);
-    }
 
+    //animation events
     public void Shoot()
     {
-        Debug.Log("Arrow shot");
+        shootArrow?.Invoke();
     }
 }
