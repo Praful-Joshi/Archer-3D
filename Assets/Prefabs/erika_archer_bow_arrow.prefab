@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689613043}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.2557832, z: 0, w: 0.9667342}
   m_LocalPosition: {x: -0.477, y: 1.541, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3157092967351743245}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -29.64, z: 0}
 --- !u!1 &148450254997963546
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +578,7 @@ GameObject:
   - component: {fileID: 9020731524913277303}
   - component: {fileID: 3196014421312738528}
   - component: {fileID: 3196014421121970585}
+  - component: {fileID: 3196014421121970588}
   m_Layer: 0
   m_Name: erika_archer_bow_arrow
   m_TagString: Untagged
@@ -647,8 +648,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08cfe08ffb666c479257f1481f1d71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiming: 0
-  shooting: 0
+--- !u!114 &3196014421121970588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349735509960567223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13d1f12a84cf5142a2ac8b1bc45d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulderObject: {fileID: 689613044}
+  mouseSensitivity: 100
 --- !u!1 &2369874218149338041
 GameObject:
   m_ObjectHideFlags: 0

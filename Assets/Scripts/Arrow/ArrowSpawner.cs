@@ -6,24 +6,33 @@ using UnityEngine;
 public class ArrowSpawner : MonoBehaviour
 {
     //declaring components
+    public Transform shoulderObject;
     public GameObject arrowPrefab;
     public Transform arrowSpawnPosition;
     private GameObject arrowInstance;
 
+    //declaring variables
+    public static RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController.shootArrow += onShootArrow;
+        PlayerAnimationsController.shootArrow += onShootArrow;
     }
 
-    private void onShootArrow()
+    private void onShootArrow(Quaternion playerRotation)
     {
-        shootArrow();
+        shootArrow(playerRotation);
     }
 
-    private void shootArrow()
+    private void shootArrow(Quaternion playerRotation)
     {
-        arrowInstance = Instantiate(arrowPrefab, arrowSpawnPosition.position, Quaternion.identity);
-        arrowInstance.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
+        arrowInstance = Instantiate(arrowPrefab, arrowSpawnPosition.position, shoulderObject.rotation);
+        if(Physics.Raycast(arrowSpawnPosition.position, shoulderObject.forward, out hit))
+        {
+            Debug.Log(hit.point);
+        }
+
+        arrowInstance.GetComponent<Rigidbody>().AddForce(shoulderObject.forward * 25f, ForceMode.Impulse);
     }
 }

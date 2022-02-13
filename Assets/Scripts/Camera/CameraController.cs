@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerFollowCam.SetActive(!playerInput.aiming);
-        playerAimCam.SetActive(playerInput.aiming);
+        playerFollowCam.SetActive(!PlayerInput.aiming);
+        playerAimCam.SetActive(PlayerInput.aiming);
     }
 }

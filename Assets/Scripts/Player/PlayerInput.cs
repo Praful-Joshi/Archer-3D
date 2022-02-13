@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
 
     //declaring variables
-    [HideInInspector] public bool aiming = false, shooting = false;
+    [HideInInspector] public static bool aiming = false, shooting = false;
 
     // Update is called once per frame
     void Update()

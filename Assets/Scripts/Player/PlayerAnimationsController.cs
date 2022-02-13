@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerAnimationsController : MonoBehaviour
 {
     //events
-    public static event Action shootArrow;
+    public static event Action<Quaternion> shootArrow;
 
     //other script ref
     private PlayerInput playerInput;
@@ -30,14 +30,13 @@ public class PlayerController : MonoBehaviour
 
     private void AimShootAnimation()
     {
-        anim.SetBool(aim, playerInput.aiming);
-        anim.SetBool(shoot, (playerInput.aiming && playerInput.shooting));
+        anim.SetBool(aim, PlayerInput.aiming);
+        anim.SetBool(shoot, (PlayerInput.aiming && PlayerInput.shooting));
     }
-
 
     //animation events
     public void Shoot()
     {
-        shootArrow?.Invoke();
+        shootArrow?.Invoke(this.transform.rotation);
     }
 }
